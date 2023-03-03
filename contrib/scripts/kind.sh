@@ -126,6 +126,12 @@ containerdConfigPatches:
 - |-
   [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:${reg_port}"]
     endpoint = ["http://${reg_name}:${reg_port}"]
+kubeadmConfigPatches:
+- |-
+  apiVersion: kubelet.config.k8s.io/v1beta1
+  kind: KubeletConfiguration
+  clusterDNS:
+  - ${dns_resolver}
 EOF
 
 docker network connect "kind" "${reg_name}" || true
