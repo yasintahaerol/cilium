@@ -10,6 +10,7 @@ default_cluster_name=""
 default_image=""
 default_kubeproxy_mode="iptables"
 default_ipfamily="dual"
+default_dns_resolver=""
 
 PROG=${0}
 controlplanes="${1:-${CONTROLPLANES:=${default_controlplanes}}}"
@@ -19,6 +20,7 @@ cluster_name="${3:-${CLUSTER_NAME:=${default_cluster_name}}}"
 image="${4:-${IMAGE:=${default_image}}}"
 kubeproxy_mode="${5:-${KUBEPROXY_MODE:=${default_kubeproxy_mode}}}"
 ipfamily="${6:-${IPFAMILY:=${default_ipfamily}}}"
+dns_resolver="${7:-${DNS_RESOLVER:=${default_dns_resolver}}}"
 CILIUM_ROOT="$(git rev-parse --show-toplevel)"
 
 usage() {
